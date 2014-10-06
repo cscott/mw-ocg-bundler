@@ -42,6 +42,21 @@ program
 	// use for ZIM backend to ensure local links work.
 	.option('--save-redirects',
 			'Save information about article title redirects')
+	// Prevent DoS:
+	// If we exceed the bundle size limit, we halt immediately and exit
+	// with an error code.
+	.option('--bundle-size-limit <bytes>',
+			'Total bundle size limit (default 0, no limit)', 0)
+	// If we exceed the image size limit, we stop downloading images, skipping
+	// all remaining images, and emit warnings, but do not halt and may
+	// eventually exit with a success code.  If you want image size violations
+	// to be fatal, use the bundle size limit.  Otherwise, typically set the
+	// image size limit to be comfortably under the bundle size limit, to
+	// ensure that the other bundle contents (HTML, attributions, etc) do
+	// not push the bundle over the bundle size limit after image size limit
+	// has been reached.
+	.option('--image-size-limit <bytes>',
+			'Total image size limit (default 0, no limit)', 0)
 	// robustness
 	.option('--retries <max retries>',
 			'Retry failing HTTP requests (default 3)')
@@ -182,6 +197,10 @@ p = p.then(function(metabook) {
 		parsoid: program.api,
 		toc: program.toc,
 		size: program.size,
+		// DoS prevention
+		bundleSizeLimit: +program.bundleSizeLimit,
+		imageSizeLimit: +program.imageSizeLimit,
+		// logging
 		log: log
 	});
 }).catch(function(err) {
