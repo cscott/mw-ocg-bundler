@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 require('es6-shim'); // for Map, endsWith, etc.
 require('prfun');
 
@@ -62,10 +63,13 @@ program
 			'Retry failing HTTP requests (default 3)')
 	.option('--timeout <milliseconds>',
 			'Timeout for all HTTP requests (default 60 seconds)')
+	// be kind to small wikis
+	.option('--parallel-request-limit <n>',
+			'Limit the number of simultaneous API requests', 0)
 	.option('-v, --verbose',
 			'Print verbose progress information')
 	.option('-D, --debug',
-			'Turn on debugging features (eg, full stack traces on exceptions)')
+			'Turn on debugging features (eg, full stack traces on exceptions)');
 program.on('--help', function() {
 	console.log('  If -o is omitted, creates bundle.zip');
 	console.log('  The -m option can be used instead of specifying titles');
@@ -88,6 +92,10 @@ if (program.retries !== undefined) {
 if (program.timeout !== undefined) {
    require('../lib/retry-request').DEFAULT_TIMEOUT = program.timeout;
 }
+if (program.parallelRequestLimit !== undefined) {
+   require('../lib/retry-request').REQUEST_LIMIT = +program.parallelRequestLimit;
+}
+
 
 var log = function() {
 	try {
