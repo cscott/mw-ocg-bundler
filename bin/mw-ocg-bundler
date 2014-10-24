@@ -4,12 +4,9 @@ require('es6-shim'); // for Map, endsWith, etc.
 require('prfun');
 
 var program = require('commander');
-var domino = require('domino');
-var request = Promise.promisify(require('../lib/retry-request'), true);
 var bundler = require('../');
 var fs = require('fs');
 var util = require('util');
-var url = require('url');
 
 var P = require('../lib/p');
 
@@ -153,25 +150,14 @@ if (program.metabook) {
 		return JSON.parse(data);
 	});
 } else if (program.collection) {
-	var uri = url.resolve(program.api,
-		program.prefix + "/" + program.collection);
 	p = p.then(function() {
-		return request(uri).spread(function(res, body) {
-			var doc = domino.createDocument(body);
-			// remove ombox
-			var ombox = doc.querySelector(".ombox");
-			ombox.parentNode.removeChild(ombox);
-			var links = doc.querySelectorAll("a");
-			var articles = [];
-			for (var i = 0; i < links.length; i++) {
-				articles.push({
-					prefix: program.prefix,
-					title: links[i].getAttribute("title")
-				})
-			}
-			return bundler.metabook.fromArticles(articles, program);
-		})
-	})
+		return bundler.metabook.fromCollection(
+			program.prefix,
+			program.collection,
+			program,
+			log
+		);
+	});
 } else {
 	// Create a metabook.json from the given prefix and page titles
 	p = p.then(function() {
