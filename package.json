@@ -12,21 +12,22 @@
   ],
   "license": "GPLv2",
   "dependencies": {
-    "commander": "~2.2.0",
+    "commander": "~2.5.0",
     "domino": "~1.0.17",
-    "es6-shim": "~0.13.0",
-    "prfun": "~1.0.0",
+    "es6-shim": "~0.20.2",
+    "prfun": "~1.0.1",
     "readable-stream": "~1.0.0",
-    "request": "~2.37.0",
+    "request": "~2.47.0",
     "rimraf": "~2.2.2",
     "sqlite3": "~2.2.3",
     "tmp": "~0.0.24"
   },
   "devDependencies": {
-    "mocha": "~1.20.1"
+    "jshint": "~2.5.0",
+    "mocha": "~2.0.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jshint . && mocha"
   },
   "bin": {
     "mw-ocg-bundler": "./bin/mw-ocg-bundler"
