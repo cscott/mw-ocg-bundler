@@ -1,3 +1,5 @@
+# mw-ocg-bundler x.x.x (not yet released)
+
 # mw-ocg-bundler 1.2.0 (2014-11-04)
 * Add `--bundle-size-limit` and `--image-size-limit` options to limit
   bundle and image size (bug 71647).
