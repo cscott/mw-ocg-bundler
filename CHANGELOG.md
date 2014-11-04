@@ -1,4 +1,14 @@
 # mw-ocg-bundler x.x.x (not yet released)
+* Add `--bundle-size-limit` and `--image-size-limit` options to limit
+  bundle and image size (bug 71647).
+* Properly resolve URLs to decode titles.
+* Improve Parsoid prefix guessing.
+* Add `--parallel-request-limit` option to limit the number of
+  simultanous API requests on small wikis (bug 71895).
+* Add `-c` option to bundle a collection from the command-line.
+* Fix "image size too big" check (bug 72377).
+* Fix hangs caused by console output from `zip`.
+* Update package dependencies.
 
 # mw-ocg-bundler 1.1.0 (2014-09-30)
 * Fix the `-d` option (images were being deleted from the directory).
