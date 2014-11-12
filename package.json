@@ -24,10 +24,12 @@
   },
   "devDependencies": {
     "jshint": "~2.5.0",
-    "mocha": "~2.0.1"
+    "mocha": "~2.0.1",
+    "npm-travis": "~1.0.0"
   },
   "scripts": {
-    "test": "jshint . && mocha"
+    "test": "jshint . && mocha",
+    "travis": "npm-travis --remote gerrit wikimedia/mediawiki-extensions-Collection-OfflineContentGenerator-bundler"
   },
   "bin": {
     "mw-ocg-bundler": "./bin/mw-ocg-bundler"
