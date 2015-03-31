@@ -23,6 +23,8 @@ program
 			'Which wiki prefix to use to resolve the title [enwiki]', 'enwiki')
 	.option('-a, --api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
+	.option('--php-api <url>',
+			'PHP API, required for non-standard prefix', null)
 	.option('-t, --toc <yes|no|auto>',
 			'Force presence/absence of toc [auto]', 'auto')
 	.option('-L, --lang <2-char lang code>',
