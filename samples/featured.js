@@ -60,6 +60,6 @@ P.forEachSeq(Object.keys(articles), function(prefix) {
 		then(function() { }, function() { /* ignore unlink errors */ }).
 		then(function() {
 			return P.spawn(path.join(__dirname, '..', 'bin', 'mw-ocg-bundler'),
-						   args, { cwd: __dirname, stdio: 'inherit' });
+						   args, { childOptions: { cwd: __dirname, stdio: 'inherit' } });
 		});
 }).done();
