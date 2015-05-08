@@ -20,11 +20,17 @@ program
 	.option('-o, --output <filename>',
 			'Save zip to the given <filename>', null)
 	.option('-p, --prefix <prefix>',
-			'Which wiki prefix to use to resolve the title [enwiki]', 'enwiki')
-	.option('-a, --api <url>',
+			'Which wiki prefix to use to resolve the title (Parsoid v1 API) [enwiki]', null)
+	.option('-h, --host <host>',
+			'Wiki hostname to use to resolve the title (Parsoid v2 API, RESTbase API) [en.wikipedia.org]', null)
+	.option('-a, --parsoid-api, --api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
+	.option('--restbase-api <url>',
+			'RESTbase API root [http://rest.wikimedia.org/<hostname>/v1/page/html]')
 	.option('--php-api <url>',
 			'PHP API, required for non-standard prefix', null)
+	.option('--api-version <auto,parsoid1,parsoid2,restbase1>',
+			'Which API to use to fetch wikitext [auto]', 'auto')
 	.option('-t, --toc <yes|no|auto>',
 			'Force presence/absence of toc [auto]', 'auto')
 	.option('-L, --lang <2-char lang code>',
@@ -152,9 +158,11 @@ if (program.metabook) {
 		return JSON.parse(data);
 	});
 } else if (program.collection) {
+	if (!(program.prefix || program.host)) {
+		program.host = 'en.wikipedia.org';
+	}
 	p = p.then(function() {
 		return bundler.metabook.fromCollection(
-			program.prefix,
 			program.collection,
 			program,
 			log
@@ -162,9 +170,12 @@ if (program.metabook) {
 	});
 } else {
 	// Create a metabook.json from the given prefix and page titles
+	if (!(program.prefix || program.host)) {
+		program.host = 'en.wikipedia.org';
+	}
 	p = p.then(function() {
 		return bundler.metabook.fromArticles(program.args.map(function(t) {
-			return { prefix: program.prefix, title: t };
+			return { prefix: program.prefix, host: program.host, title: t };
 		}), program);
 	});
 }
@@ -218,7 +229,9 @@ p = p.then(function(metabook) {
 		compat: !!program.compat, // pediapress compatibility
 		follow: !!program.follow, // follow redirects
 		saveRedirects: !!program.saveRedirects, // save redirect info
-		parsoid: program.api,
+		restbaseApi: program.restbaseApi,
+		parsoidApi: program.parsoidApi,
+		apiVersion: program.apiVersion,
 		toc: program.toc,
 		size: program.size,
 		// DoS prevention
