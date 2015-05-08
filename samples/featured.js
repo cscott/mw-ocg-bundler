@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** Generate bundles from the featured articles list. */
 "use strict";
-require('es6-shim');
+require('core-js/shim');
 
 
 var program = require('commander');

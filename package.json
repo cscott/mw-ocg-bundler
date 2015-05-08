@@ -13,9 +13,9 @@
   "license": "GPLv2",
   "dependencies": {
     "commander": "~2.5.0",
+    "core-js": "~0.9.1",
     "domino": "~1.0.17",
-    "es6-shim": "~0.20.2",
-    "prfun": "~1.0.1",
+    "prfun": "~2.1.1",
     "readable-stream": "~1.0.0",
     "request": "~2.47.0",
     "rimraf": "~2.2.2",
@@ -23,7 +23,7 @@
     "tmp": "~0.0.24"
   },
   "devDependencies": {
-    "jshint": "~2.5.0",
+    "jshint": "~2.6.3",
     "mocha": "~2.0.1",
     "npm-travis": "~1.0.0"
   },

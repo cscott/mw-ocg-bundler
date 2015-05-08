@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
-require('es6-shim'); // for Map, endsWith, etc.
-require('prfun');
+require('core-js/shim'); // for Map, endsWith, etc.
+var Promise = require('prfun');
 
 var program = require('commander');
 var bundler = require('../');
