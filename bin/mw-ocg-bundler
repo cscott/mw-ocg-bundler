@@ -26,7 +26,7 @@ program
 	.option('-a, --parsoid-api, --api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
 	.option('--restbase-api <url>',
-			'RESTbase API root [http://rest.wikimedia.org/<hostname>/v1/page/html]')
+			'RESTbase API root [http://rest.wikimedia.org/<hostname>/v1/]')
 	.option('--php-api <url>',
 			'PHP API, required for non-standard prefix', null)
 	.option('--api-version <auto,parsoid1,parsoid2,restbase1>',
@@ -229,7 +229,10 @@ p = p.then(function(metabook) {
 		compat: !!program.compat, // pediapress compatibility
 		follow: !!program.follow, // follow redirects
 		saveRedirects: !!program.saveRedirects, // save redirect info
-		restbaseApi: program.restbaseApi,
+		restbaseApi: program.restbaseApi ?
+			// Be user-friendly: strip trailing /page/html/ if present.
+			program.restbaseApi.replace(/\/page\/html\/?$/, '/') :
+			undefined,
 		parsoidApi: program.parsoidApi,
 		apiVersion: program.apiVersion,
 		toc: program.toc,
