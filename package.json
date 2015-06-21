@@ -10,7 +10,7 @@
   "keywords": [
     "wikitext"
   ],
-  "license": "GPLv2",
+  "license": "GPL-2.0",
   "dependencies": {
     "commander": "~2.5.0",
     "core-js": "~0.9.1",
