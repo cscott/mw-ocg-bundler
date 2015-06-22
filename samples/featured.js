@@ -56,7 +56,7 @@ P.forEachSeq(Object.keys(articles), function(prefix) {
 	args = args.concat([ '--title', prefix, '-o', outfile, '-p', prefix ]).
 		concat(articles[prefix]);
 	console.log('mw-ocg-bundler', args.join(' '));
-	return P.call(rimraf, null, path.join(__dirname, outfile)).
+	return P.call(rimraf, null, path.join(__dirname, outfile), { disableGlob: true }).
 		then(function() { }, function() { /* ignore unlink errors */ }).
 		then(function() {
 			return P.spawn(path.join(__dirname, '..', 'bin', 'mw-ocg-bundler'),
