@@ -10,7 +10,7 @@
                     "timestamp": "1383073948",
                     "title": "1933 Atlantic hurricane season",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Atlantic_hurricane_season",
+                    "url": "https://en.wikipedia.org/wiki/1933_Atlantic_hurricane_season",
                     "wiki": 0
                 }
             ],
@@ -27,7 +27,7 @@
                     "timestamp": "1366230514",
                     "title": "1933 Trinidad hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Trinidad_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Trinidad_hurricane",
                     "wiki": 0
                 },
                 {
@@ -38,7 +38,7 @@
                     "timestamp": "1378848251",
                     "title": "1933 Texas tropical storm",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Texas_tropical_storm",
+                    "url": "https://en.wikipedia.org/wiki/1933_Texas_tropical_storm",
                     "wiki": 0
                 },
                 {
@@ -49,7 +49,7 @@
                     "timestamp": "1383099157",
                     "title": "1933 Chesapeake–Potomac hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Chesapeake%E2%80%93Potomac_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Chesapeake%E2%80%93Potomac_hurricane",
                     "wiki": 0
                 },
                 {
@@ -60,7 +60,7 @@
                     "timestamp": "1378848216",
                     "title": "1933 Cuba–Brownsville hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Cuba%E2%80%93Brownsville_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Cuba%E2%80%93Brownsville_hurricane",
                     "wiki": 0
                 },
                 {
@@ -71,7 +71,7 @@
                     "timestamp": "1380856363",
                     "title": "1933 Treasure Coast hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Treasure_Coast_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Treasure_Coast_hurricane",
                     "wiki": 0
                 },
                 {
@@ -82,7 +82,7 @@
                     "timestamp": "1381119599",
                     "title": "1933 Outer Banks hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Outer_Banks_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Outer_Banks_hurricane",
                     "wiki": 0
                 },
                 {
@@ -93,7 +93,7 @@
                     "timestamp": "1375840931",
                     "title": "1933 Tampico hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Tampico_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Tampico_hurricane",
                     "wiki": 0
                 },
                 {
@@ -104,7 +104,7 @@
                     "timestamp": "1382894555",
                     "title": "1933 Cuba–Bahamas hurricane",
                     "type": "article",
-                    "url": "http://en.wikipedia.org/wiki/1933_Cuba%E2%80%93Bahamas_hurricane",
+                    "url": "https://en.wikipedia.org/wiki/1933_Cuba%E2%80%93Bahamas_hurricane",
                     "wiki": 0
                 }
             ],
@@ -128,7 +128,7 @@
     "version": 1,
     "wikis": [
         {
-            "baseurl": "http://en.wikipedia.org/w",
+            "baseurl": "https://en.wikipedia.org/w",
             "imagesize": 1200,
             "keep_tmpfiles": false,
             "output": "/home/anomie/test.zip",
@@ -143,7 +143,7 @@
                     "displayname": "Wikimedia Commons",
                     "rootUrl": "//upload.wikimedia.org/wikipedia/commons",
                     "local": false,
-                    "apiUrl": "http://commons.wikimedia.org/w/api.php",
+                    "apiUrl": "https://commons.wikimedia.org/w/api.php",
                     "wiki": 1
                 },
                 {
@@ -156,7 +156,7 @@
             ]
         },
         {
-            "baseurl": "http://commons.wikimedia.org/w/api.php",
+            "baseurl": "https://commons.wikimedia.org/w/api.php",
             "imagesize": 1200,
             "keep_tmpfiles": false,
             "script_extension": ".php",

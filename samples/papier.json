@@ -9,7 +9,7 @@
       "type": "article",
       "title": "Papier",
       "content_type": "text/x-wiki",
-      "url": "http://de.wikipedia.org/wiki/Papier",
+      "url": "https://de.wikipedia.org/wiki/Papier",
       "wiki": 0,
       "revision": "124970893"
     }
@@ -27,7 +27,7 @@
   "wikis": [
     {
       "type": "wikiconf",
-      "baseurl": "http://de.wikipedia.org/w",
+      "baseurl": "https://de.wikipedia.org/w",
       "imagesize": 1200,
       "keep_tmpfiles": false,
       "script_extension": ".php",
@@ -41,7 +41,7 @@
           "rootUrl": "//upload.wikimedia.org/wikipedia/commons",
           "local": false,
           "type": "filerepo",
-          "scriptDirUrl": "http://commons.wikimedia.org/w",
+          "scriptDirUrl": "https://commons.wikimedia.org/w",
           "wiki": 1
         },
         {
@@ -56,7 +56,7 @@
     },
     {
       "type": "wikiconf",
-      "baseurl": "http://commons.wikimedia.org/w",
+      "baseurl": "https://commons.wikimedia.org/w",
       "imagesize": 1200,
       "keep_tmpfiles": false,
       "script_extension": ".php",
