@@ -19,7 +19,7 @@
     "readable-stream": "~1.0.0",
     "request": "~2.47.0",
     "rimraf": "~2.2.2",
-    "sqlite3": "~2.2.3",
+    "sqlite3": "~3.0.8",
     "tmp": "~0.0.24"
   },
   "devDependencies": {
