@@ -21,7 +21,7 @@ program
 			'Save zip to the given <filename>', null)
 	.option('-p, --prefix <prefix>',
 			'Which wiki prefix to use to resolve the title (Parsoid v1 API) [enwiki]', null)
-	.option('-h, --host <host>',
+	.option('-h, --domain <domain name>',
 			'Wiki hostname to use to resolve the title (Parsoid v2 API, RESTbase API) [en.wikipedia.org]', null)
 	.option('-a, --parsoid-api, --api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
@@ -158,8 +158,8 @@ if (program.metabook) {
 		return JSON.parse(data);
 	});
 } else if (program.collection) {
-	if (!(program.prefix || program.host)) {
-		program.host = 'en.wikipedia.org';
+	if (!(program.prefix || program.domain)) {
+		program.domain = 'en.wikipedia.org';
 	}
 	p = p.then(function() {
 		return bundler.metabook.fromCollection(
@@ -170,12 +170,12 @@ if (program.metabook) {
 	});
 } else {
 	// Create a metabook.json from the given prefix and page titles
-	if (!(program.prefix || program.host)) {
-		program.host = 'en.wikipedia.org';
+	if (!(program.prefix || program.domain)) {
+		program.domain = 'en.wikipedia.org';
 	}
 	p = p.then(function() {
 		return bundler.metabook.fromArticles(program.args.map(function(t) {
-			return { prefix: program.prefix, host: program.host, title: t };
+			return { prefix: program.prefix, domain: program.domain, title: t };
 		}), program);
 	});
 }
