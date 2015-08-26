@@ -23,7 +23,7 @@ program
 			'Which wiki prefix to use to resolve the title (Parsoid v1 API) [enwiki]', null)
 	.option('-h, --domain <domain name>',
 			'Wiki hostname to use to resolve the title (Parsoid v2 API, RESTbase API) [en.wikipedia.org]', null)
-	.option('-a, --parsoid-api, --api <url>',
+	.option('-a, --parsoid-api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
 	.option('--restbase-api <url>',
 			'RESTbase API root [http://rest.wikimedia.org/<hostname>/v1/]')
