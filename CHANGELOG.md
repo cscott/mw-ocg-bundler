@@ -1,3 +1,5 @@
+# mw-ocg-bundler x.x.x (not yet released)
+
 # mw-ocg-bundler 1.3.0 (2015-09-14)
 * Add `--php-api` option to allow specification of PHP API endpoint.
 * Remove broken `--api` option alias.
