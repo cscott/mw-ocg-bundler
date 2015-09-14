@@ -1,4 +1,10 @@
 # mw-ocg-bundler x.x.x (not yet released)
+* Add `--php-api` option to allow specification of PHP API endpoint.
+* Remove broken `--api` option alias.
+* Add RESTBase and Parsoid v3 API support.
+* Add "AttributionRequired" metadata to OCG bundle.
+* Add User-Agent header to API requests.
+* Switch from es6-shim to core-js.
 
 # mw-ocg-bundler 1.2.0 (2014-11-04)
 * Add `--bundle-size-limit` and `--image-size-limit` options to limit
