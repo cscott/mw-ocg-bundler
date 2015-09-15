@@ -21,7 +21,9 @@ program
 			'Save zip to the given <filename>', null)
 	.option('-p, --prefix <prefix>',
 			'Which wiki prefix to use to resolve the title (Parsoid v1 API) [enwiki]', null)
-	.option('-h, --domain <domain name>',
+	// this option can't be named 'domain' due to
+	// https://github.com/tj/commander.js/issues/370
+	.option('-h, --domainname <domain name>',
 			'Wiki hostname to use to resolve the title (Parsoid v2/v3 API, RESTbase API) [en.wikipedia.org]', null)
 	.option('-a, --parsoid-api <url>',
 			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
@@ -158,8 +160,8 @@ if (program.metabook) {
 		return JSON.parse(data);
 	});
 } else if (program.collection) {
-	if (!(program.prefix || program.domain)) {
-		program.domain = 'en.wikipedia.org';
+	if (!(program.prefix || program.domainname)) {
+		program.domainname = 'en.wikipedia.org';
 	}
 	p = p.then(function() {
 		return bundler.metabook.fromCollection(
@@ -170,12 +172,12 @@ if (program.metabook) {
 	});
 } else {
 	// Create a metabook.json from the given prefix and page titles
-	if (!(program.prefix || program.domain)) {
-		program.domain = 'en.wikipedia.org';
+	if (!(program.prefix || program.domainname)) {
+		program.domainname = 'en.wikipedia.org';
 	}
 	p = p.then(function() {
 		return bundler.metabook.fromArticles(program.args.map(function(t) {
-			return { prefix: program.prefix, domain: program.domain, title: t };
+			return { prefix: program.prefix, domain: program.domainname, title: t };
 		}), program);
 	});
 }
@@ -232,8 +234,8 @@ p = p.then(function(metabook) {
 		restbaseApi: program.restbaseApi ?
 			// Be user-friendly: strip trailing /page/html/ if present.
 			program.restbaseApi.replace(/\/page\/html\/?$/, '/') :
-			program.domain ?
-			'http://rest.wikimedia.org/' + program.domain + '/v1/' :
+			program.domainname ?
+			'http://rest.wikimedia.org/' + program.domainname + '/v1/' :
 			undefined,
 		parsoidApi: program.parsoidApi,
 		apiVersion: program.apiVersion,
