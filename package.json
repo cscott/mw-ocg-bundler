@@ -12,19 +12,19 @@
   ],
   "license": "GPL-2.0",
   "dependencies": {
-    "commander": "~2.5.0",
-    "core-js": "~0.9.1",
-    "domino": "~1.0.17",
+    "commander": "~2.8.1",
+    "core-js": "~0.9.18",
+    "domino": "~1.0.19",
     "prfun": "~2.1.1",
-    "readable-stream": "~1.0.0",
-    "request": "~2.47.0",
-    "rimraf": "~2.4.0",
-    "sqlite3": "~3.0.8",
-    "tmp": "~0.0.24"
+    "readable-stream": "~1.0.33",
+    "request": "~2.64.0",
+    "rimraf": "~2.4.3",
+    "sqlite3": "~3.1.0",
+    "tmp": "~0.0.27"
   },
   "devDependencies": {
-    "jshint": "~2.6.3",
-    "mocha": "~2.0.1",
+    "jshint": "~2.8.0",
+    "mocha": "~2.3.3",
     "npm-travis": "~1.0.0"
   },
   "scripts": {

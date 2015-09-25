@@ -63,7 +63,7 @@ Licensed under GPLv2.
 [mw-ocg-texter]:  https://github.com/cscott/mw-ocg-texter
 [XeLaTeX]:        https://en.wikipedia.org/wiki/XeTeX
 
-[NPM1]: https://nodei.co/npm/mw-ocg-bundler.svg
+[NPM1]: https://nodei.co/npm/mw-ocg-bundler.png
 [NPM2]: https://nodei.co/npm/mw-ocg-bundler/
 
 [1]: https://travis-ci.org/cscott/mw-ocg-bundler.svg
