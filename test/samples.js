@@ -1,9 +1,9 @@
 /* global describe, it */
-"use strict";
+'use strict';
 require('core-js/shim');
 var Promise = require('prfun');
 
-var assert = require("assert");
+var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
@@ -11,12 +11,12 @@ var util = require('util');
 var bundler = require('../');
 var P = require('../lib/p');
 
-var IMAGESIZE = 64; // very small to keep downloads short
-// extra logging in travis/jenkins, ensure they don't timeout w/o output
+var IMAGESIZE = 64; // Very small to keep downloads short.
+// Extra logging in travis/jenkins, ensure they don't timeout w/o output.
 var TRAVIS = !!(process.env.TRAVIS || process.env.ZUUL_COMMIT);
 
-// ensure that we don't crash on any of our sample inputs
-describe("Basic crash test", function() {
+// Ensure that we don't crash on any of our sample inputs.
+describe('Basic crash test', function() {
 	['taoism.json', 'hurricanes.json', 'multiwiki.json', 'subpage.json'].forEach(function(name) {
 		describe(name, function() {
 			it('should bundle', function() {
@@ -35,10 +35,10 @@ describe("Basic crash test", function() {
 								if (!TRAVIS) { return; }
 								var time = new Date().toISOString().slice(11,23);
 								console.log(time, util.format.apply(util, arguments));
-							}
+							},
 						});
 					}).then(function(_) {
-						// should resolve with no value
+						// Should resolve with no value.
 						assert.equal(_, undefined);
 					}).finally(function() {
 						try {

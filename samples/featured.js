@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** Generate bundles from the featured articles list. */
-"use strict";
+'use strict';
 require('core-js/shim');
 
 
@@ -42,8 +42,8 @@ fs.
 		articles[prefix].push(title);
 	});
 
-// now make a collection for each language
-// (cross-wiki stuff will have to wait)
+// Now make a collection for each language
+// (cross-wiki stuff will have to wait).
 P.forEachSeq(Object.keys(articles), function(prefix) {
 	var outfile = prefix + '.zip';
 	if (program.skip && fs.existsSync(path.join(__dirname, outfile))) {
@@ -57,9 +57,11 @@ P.forEachSeq(Object.keys(articles), function(prefix) {
 		concat(articles[prefix]);
 	console.log('mw-ocg-bundler', args.join(' '));
 	return P.call(rimraf, null, path.join(__dirname, outfile), { disableGlob: true }).
-		then(function() { }, function() { /* ignore unlink errors */ }).
+		then(function() { }, function() { /* Ignore unlink errors. */ }).
 		then(function() {
-			return P.spawn(path.join(__dirname, '..', 'bin', 'mw-ocg-bundler'),
-						   args, { childOptions: { cwd: __dirname, stdio: 'inherit' } });
+			return P.spawn(
+				path.join(__dirname, '..', 'bin', 'mw-ocg-bundler'),
+				args, { childOptions: { cwd: __dirname, stdio: 'inherit' } }
+			);
 		});
 }).done();
