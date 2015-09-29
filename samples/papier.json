@@ -32,7 +32,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "dewiki",
       "filerepos": [
         {
@@ -62,7 +61,6 @@
       "script_extension": ".php",
       "format": "nuwiki",
       "prefix": "commonswiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "filerepos": [
         {
           "name": "local",

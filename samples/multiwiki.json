@@ -184,7 +184,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "enwiki"
     },
     {
@@ -194,8 +193,7 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "prefix": "commonswiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/"
+      "prefix": "commonswiki"
     },
     {
       "type": "wikiconf",
@@ -204,7 +202,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "arwiki"
     },
     {
@@ -214,7 +211,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "dewiki"
     },
     {
@@ -224,7 +220,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "eswiki"
     },
     {
@@ -234,7 +229,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "fawiki"
     },
     {
@@ -244,7 +238,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "frwiki"
     },
     {
@@ -254,7 +247,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "hewiki"
     },
     {
@@ -264,7 +256,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "hiwiki"
     },
     {
@@ -274,7 +265,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "itwiki"
     },
     {
@@ -284,7 +274,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "jawiki"
     },
     {
@@ -294,7 +283,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "kowiki"
     },
     {
@@ -304,7 +292,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "plwiki"
     },
     {
@@ -314,7 +301,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "ptwiki"
     },
     {
@@ -324,7 +310,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "ruwiki"
     },
     {
@@ -334,7 +319,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "viwiki"
     },
     {
@@ -344,7 +328,6 @@
       "keep_tmpfiles": false,
       "script_extension": ".php",
       "format": "nuwiki",
-      "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
       "prefix": "zhwiki"
     }
   ],

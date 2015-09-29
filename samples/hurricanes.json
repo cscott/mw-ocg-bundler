@@ -135,7 +135,6 @@
             "script_extension": ".php",
             "status_file": "/home/anomie/statusfile",
             "type": "wikiconf",
-            "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
             "prefix": "enwiki",
             "filerepos": [
                 {
@@ -162,7 +161,6 @@
             "script_extension": ".php",
             "format": "nuwiki",
             "type": "wikiconf",
-            "parsoid": "http://parsoid-lb.eqiad.wikimedia.org/",
             "prefix": "commonswiki",
             "filerepos": [
                 {

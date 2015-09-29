@@ -28,7 +28,7 @@ describe('Basic crash test', function() {
 						metabook = JSON.parse(metabook);
 						return bundler.bundle(metabook, {
 							output: filename + '.zip',
-							parsoidApi: 'http://parsoid-lb.eqiad.wikimedia.org/',
+							apiVersion: 'restbase1',
 							size: IMAGESIZE,
 							debug: TRAVIS,
 							log: function() {
