@@ -81,7 +81,10 @@ program
 	.option('-v, --verbose',
 			'Print verbose progress information')
 	.option('-D, --debug',
-			'Turn on debugging features (eg, full stack traces on exceptions)');
+			'Turn on debugging features (eg, full stack traces on exceptions)')
+	// CSS and Javascript modules of each article are required for building HTML tree.
+	.option('--fetchModules',
+			'Fetch css and javascript modules for articles');
 program.on('--help', function() {
 	console.log('  If -o is omitted, creates bundle.zip');
 	console.log('  The -m option can be used instead of specifying titles');
