@@ -23,7 +23,7 @@
     "tmp": "~0.0.27"
   },
   "devDependencies": {
-    "jscs": "~2.1.1",
+    "jscs": "~2.5.0",
     "jshint": "~2.8.0",
     "mocha": "~2.3.3",
     "npm-travis": "~1.0.0"
@@ -32,9 +32,9 @@
     "test": "npm run lint-no-0.8 && npm run mocha",
     "lint": "npm run jshint && npm run jscs",
     "lint-no-0.8": "node -e 'process.exit(/v0[.][0-8][.]/.test(process.version) ? 0 : 1)' || npm run lint",
-    "jshint": "jshint .",
-    "jscs": "jscs .",
-    "jscs-fix": "jscs --fix .",
+    "jshint": "jshint . bin/mw-ocg-bundler",
+    "jscs": "jscs . bin/mw-ocg-bundler",
+    "jscs-fix": "jscs --fix . bin/mw-ocg-bundler",
     "mocha": "mocha",
     "travis": "npm-travis --remote gerrit wikimedia/mediawiki-extensions-Collection-OfflineContentGenerator-bundler"
   },

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-"use strict";
-require('core-js/shim'); // for Map, endsWith, etc.
+'use strict';
+require('core-js/shim'); // For Map, endsWith, etc.
 var Promise = require('prfun');
 
 var program = require('commander');
@@ -21,7 +21,7 @@ program
 			'Save zip to the given <filename>', null)
 	.option('-p, --prefix <prefix>',
 			'Which wiki prefix to use to resolve the title (Parsoid v1 API) [enwiki]', null)
-	// this option can't be named 'domain' due to
+	// This option can't be named 'domain' due to
 	// https://github.com/tj/commander.js/issues/370
 	.option('-h, --domainname <domain name>',
 			'Wiki hostname to use to resolve the title (Parsoid v2/v3 API, RESTbase API) [en.wikipedia.org]', null)
@@ -45,14 +45,14 @@ program
 			'Specify a collection to bundle', null)
 	.option('--title <title>',
 			'Set the title of the generated collection', null)
-	// set this to true to emit deprecated file formats for better pediapress
-	// compatibility
+	// Set this to true to emit deprecated file formats for better
+	// pediapress compatibility.
 	.option('--no-compat',
 			'Omit redundant data used for backward-compatibility')
-	// follow redirects? disable if front-end is known to give good titles.
+	// Follow redirects? Disable if front-end is known to give good titles.
 	.option('--no-follow',
 			'Don\'t follow article title redirects')
-	// use for ZIM backend to ensure local links work.
+	// Use for ZIM backend to ensure local links work.
 	.option('--save-redirects',
 			'Save information about article title redirects')
 	// Prevent DoS:
@@ -70,20 +70,21 @@ program
 	// has been reached.
 	.option('--image-size-limit <bytes>',
 			'Total image size limit (default 0, no limit)', 0)
-	// robustness
+	// Provides extra robustness against network flakiness.
 	.option('--retries <max retries>',
 			'Retry failing HTTP requests (default 3)')
 	.option('--timeout <milliseconds>',
 			'Timeout for all HTTP requests (default 60 seconds)')
-	// be kind to small wikis
+	// Be kind to small wikis.
 	.option('--parallel-request-limit <n>',
 			'Limit the number of simultaneous API requests', 0)
 	.option('-v, --verbose',
 			'Print verbose progress information')
 	.option('-D, --debug',
 			'Turn on debugging features (eg, full stack traces on exceptions)')
-	// CSS and Javascript modules of each article are required for building HTML tree.
-	.option('--fetchModules',
+	// CSS and Javascript modules of each article are required for building
+	// HTML tree.
+	.option('--fetch-modules',
 			'Fetch css and javascript modules for articles');
 program.on('--help', function() {
 	console.log('  If -o is omitted, creates bundle.zip');
@@ -105,13 +106,13 @@ if (program.metabook && program.collection) {
 }
 
 if (program.retries !== undefined) {
-   require('../lib/retry-request').DEFAULT_RETRIES = program.retries;
+	require('../lib/retry-request').DEFAULT_RETRIES = program.retries;
 }
 if (program.timeout !== undefined) {
-   require('../lib/retry-request').DEFAULT_TIMEOUT = program.timeout;
+	require('../lib/retry-request').DEFAULT_TIMEOUT = program.timeout;
 }
 if (program.parallelRequestLimit !== undefined) {
-   require('../lib/retry-request').REQUEST_LIMIT = +program.parallelRequestLimit;
+	require('../lib/retry-request').REQUEST_LIMIT = +program.parallelRequestLimit;
 }
 
 
@@ -121,7 +122,7 @@ var log = function() {
 		var level = /^ERROR:/.test(message) ? 'error' :
 			/^WARN:/.test(message) ? 'warn' :
 			'info';
-		// en/disable log messages here
+		// Enable/disable log messages here.
 		if (program.verbose || program.debug || level === 'error') {
 			console.error.apply(console, arguments);
 		}
@@ -129,34 +130,34 @@ var log = function() {
 			process.send({
 				type: 'log',
 				level: level,
-				message: message
+				message: message,
 			});
 		}
 	} catch (err) {
 		// This should never happen!  But don't try to convert arguments
 		// toString() if it does, since that might fail too.
-		console.error("Could not format message!", err);
+		console.error('Could not format message!', err);
 		if (process.send) {
 			process.send({
 				type: 'log',
 				level: 'error',
 				message: 'Could not format message! ' + err,
-				stack: err.stack
+				stack: err.stack,
 			});
 		}
 	}
 };
 
 if (program.debug) {
-	// easier-to-read filenames, for debugging
+	// Easier-to-read filenames, for debugging.
 	require('../lib/image').COMPAT_FILENAMES = true;
 }
 
 var p = Promise.resolve();
 
-// Load metabook.json
+// Load metabook.json.
 if (program.metabook) {
-	// Load from file and parse JSON
+	// Load from file and parse JSON.
 	p = p.then(function() {
 		return P.call(fs.readFile, fs, program.metabook, 'utf8');
 	}).then(function(data) {
@@ -174,7 +175,7 @@ if (program.metabook) {
 		);
 	});
 } else {
-	// Create a metabook.json from the given prefix and page titles
+	// Create a metabook.json from the given prefix and page titles.
 	if (!(program.prefix || program.domainname)) {
 		program.domainname = 'en.wikipedia.org';
 	}
@@ -185,38 +186,39 @@ if (program.metabook) {
 	});
 }
 
-// set default output filename
+// Set default output filename.
 if ((!program.directory) && (!program.output)) {
-	program.output = "bundle.zip";
+	program.output = 'bundle.zip';
 }
 
-// okay, do it!
+// Okay, do it!
 p = p.then(function(metabook) {
 	if (program.title) {
 		metabook.title = program.title;
 	}
 	if (!metabook.papersize) {
 		if (program.papersize === 'auto') {
-			// use user's default papersize, as spec'ed by libpaper.
-			// this may be a linuxism, but it's harmless if not present.
+			// Use user's default papersize, as spec'ed by libpaper.
+			// This may be a Linux-ism, but it's harmless if not present.
 			if (process.env.PAPERSIZE) {
 				metabook.papersize = process.env.PAPERSIZE;
 				return metabook;
 			}
-			return P.call(fs.readFile, fs,
-						  process.env.PAPERCONF || '/etc/papersize', 'utf8').
-				then(function(paperconf) {
-					// remove anything starting with # (comments)
-					// ignore whitespace, take the "first string"
-					// case-insensitive
-					paperconf = paperconf.replace(/#[^\r\n]*/g, '').trim().
-						replace(/\s[\s\S]*/, '').toLowerCase();
-					metabook.papersize = paperconf;
-					return metabook;
-				}, function() {
-					// no such file; leave papersize unspecified.
-					return metabook;
-				});
+			return P.call(
+				fs.readFile, fs,
+				process.env.PAPERCONF || '/etc/papersize', 'utf8'
+			).then(function(paperconf) {
+				// Remove anything starting with # (comments).
+				// Ignore whitespace, take the "first string".
+				// Size specification is case-insensitive.
+				paperconf = paperconf.replace(/#[^\r\n]*/g, '').trim().
+					replace(/\s[\s\S]*/, '').toLowerCase();
+				metabook.papersize = paperconf;
+				return metabook;
+			}, function() {
+				// No such file; leave papersize unspecified.
+				return metabook;
+			});
 		}
 		metabook.papersize = program.papersize;
 	}
@@ -224,16 +226,16 @@ p = p.then(function(metabook) {
 }).then(function(metabook) {
 	if (metabook.papersize !== undefined &&
 		!/^(letter|a4)$/.test(metabook.papersize)) {
-		log("WARN: unknown papersize:", metabook.papersize);
+		log('WARN: unknown papersize:', metabook.papersize);
 		delete metabook.papersize;
 	}
 	return bundler.bundle(metabook, {
 		nozip: !!program.directory,
 		output: program.directory || program.output,
 		debug: !!program.debug,
-		compat: !!program.compat, // pediapress compatibility
-		follow: !!program.follow, // follow redirects
-		saveRedirects: !!program.saveRedirects, // save redirect info
+		compat: !!program.compat, // For pediapress compatibility.
+		follow: !!program.follow, // Follow redirects.
+		saveRedirects: !!program.saveRedirects, // Save redirect info.
 		restbaseApi: program.restbaseApi ?
 			// Be user-friendly: strip trailing /page/html/ if present.
 			program.restbaseApi.replace(/\/page\/html\/?$/, '/') :
@@ -244,25 +246,26 @@ p = p.then(function(metabook) {
 		apiVersion: program.apiVersion,
 		toc: program.toc,
 		size: program.size,
-		// DoS prevention
+		// DoS prevention.
 		bundleSizeLimit: +program.bundleSizeLimit,
 		imageSizeLimit: +program.imageSizeLimit,
-		// logging
-		log: log
+		// Logging.
+		log: log,
 	});
 }).catch(function(err) {
 	var msg = {
 		type: 'log',
-		level: 'error'
+		level: 'error',
 	};
-	if ( err instanceof Error ) {
+	if (err instanceof Error) {
 		msg.message = err.message;
 		msg.stack = err.stack;
 	} else {
 		msg.message = '' + err;
 	}
-	console.error( (program.debug && msg.stack) || msg.message );
-	// process.send is sync, so we won't exit before this is sent (yay)
+	console.error((program.debug && msg.stack) || msg.message);
+	// The process.send method is synchronous, so we won't exit before
+	// this is sent (yay).
 	if (process.send) {
 		process.send(msg);
 	}
