@@ -31,6 +31,10 @@ describe('Basic crash test', function() {
 							apiVersion: 'restbase1',
 							size: IMAGESIZE,
 							debug: TRAVIS,
+							compat: true,
+							follow: true,
+							saveRedirects: true,
+							fetchModules: true,
 							log: function() {
 								if (!TRAVIS) { return; }
 								var time = new Date().toISOString().slice(11,23);

@@ -236,6 +236,7 @@ p = p.then(function(metabook) {
 		compat: !!program.compat, // For pediapress compatibility.
 		follow: !!program.follow, // Follow redirects.
 		saveRedirects: !!program.saveRedirects, // Save redirect info.
+		fetchModules: !!program.fetchModules, // For full HTML tree.
 		restbaseApi: program.restbaseApi ?
 			// Be user-friendly: strip trailing /page/html/ if present.
 			program.restbaseApi.replace(/\/page\/html\/?$/, '/') :
