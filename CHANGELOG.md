@@ -1,4 +1,13 @@
-# mw-ocg-bundler x.x.x (not yet released)
+# mw-ocg-bundler 1.3.1 (2016-03-31)
+* Use underscores in titles sent to the REST v1/Parsoid v3 API.
+* Use `body_only` instead of `bodyOnly` in REST v1/Parsoid v3 API.
+* Support downloading the set of CSS/JS modules required.
+* Add username to User-Agent header.
+* Deprecate `parsoid-lb.eqiad.wikimedia.org`.
+* Handle protocol-relative API urls.
+* Turn on jscs and clean up source code.
+* Update commander, request, sqlite3, jshint, and mocha dependencies.
+* Rename `--domain` option to `--domainname` or `-h`.
 
 # mw-ocg-bundler 1.3.0 (2015-09-14)
 * Add `--php-api` option to allow specification of PHP API endpoint.
