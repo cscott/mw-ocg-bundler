@@ -43,6 +43,18 @@ bin/mw-ocg-bundler -v -o bundle.zip -m metabook.json -n nfo.json
 
 For non-interactive use feel free to remove the `-v` flag.
 
+If you are running a local mediawiki instance, use appropriate `-h`,
+`--parsoid-api`, and `--php-api` options to point at your local wiki and local
+Parsoid installation:
+```
+bin/mw-ocg-bundler -v -o bundle.zip -h localhost --parsoid-api http://localhost:8142 --php-api http://localhost/api.php "Main Page"
+```
+
+Note that the argument to `-h` must match the "domain" you've
+configured in Parsoid's `localsettings.js` and MediaWiki's
+`$wgVirtualRestConfig`; it doesn't necessarily need to be a valid
+DNS domain.  See [Visual Editor's configuration guide] for more details.
+
 For other options, see:
 ```
 bin/mw-ocg-bundler --help
@@ -62,6 +74,7 @@ Licensed under GPLv2.
 [mw-ocg-latexer]: https://github.com/wikimedia/mediawiki-extensions-Collection-OfflineContentGenerator-latex_renderer
 [mw-ocg-texter]:  https://github.com/cscott/mw-ocg-texter
 [XeLaTeX]:        https://en.wikipedia.org/wiki/XeTeX
+[Visual Editor's configuration guide]:  https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid
 
 [NPM1]: https://nodei.co/npm/mw-ocg-bundler.png
 [NPM2]: https://nodei.co/npm/mw-ocg-bundler/
