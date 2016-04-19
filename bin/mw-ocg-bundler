@@ -26,7 +26,7 @@ program
 	.option('-h, --domainname <domain name>',
 			'Wiki hostname to use to resolve the title (Parsoid v2/v3 API, RESTbase API) [en.wikipedia.org]', null)
 	.option('-a, --parsoid-api <url>',
-			'Parsoid API root', 'http://parsoid-lb.eqiad.wikimedia.org/')
+			'Parsoid API root')
 	.option('--restbase-api <url>',
 			'RESTbase API root [http://rest.wikimedia.org/<hostname>/v1/]')
 	.option('--php-api <url>',
@@ -240,8 +240,6 @@ p = p.then(function(metabook) {
 		restbaseApi: program.restbaseApi ?
 			// Be user-friendly: strip trailing /page/html/ if present.
 			program.restbaseApi.replace(/\/page\/html\/?$/, '/') :
-			program.domainname ?
-			'http://rest.wikimedia.org/' + program.domainname + '/v1/' :
 			undefined,
 		parsoidApi: program.parsoidApi,
 		apiVersion: program.apiVersion,
